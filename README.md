@@ -36,7 +36,7 @@ NotifyMe.Builder notifyMe = new NotifyMe.Builder(getApplicationContext());
 Then set the fields you want.
 
 ```java
-Uri alarmSound12am = Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.song);
+Uri Sound = Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.song);
   
   notifyMe.title(String title);
   notifyMe.content(String content);
@@ -45,7 +45,7 @@ Uri alarmSound12am = Uri.parse("android.resource://" + context.getPackageName() 
   notifyMe.time(Calendar time);//The time to popup notification
   notifyMe.delay(Int delay);//Delay in ms
   notifyMe.large_icon(Int resource);//Icon resource by ID
-  notifyMe.sound(alarmSound12am);//add your sound.
+  notifyMe.sound(Sound);//add your sound.
   notifyMe.rrule("FREQ=MINUTELY;INTERVAL=5;COUNT=2")//RRULE for frequency of notification
   notifyMe.addAction(Intent intent,String text); //The action will call the intent when pressed
   
