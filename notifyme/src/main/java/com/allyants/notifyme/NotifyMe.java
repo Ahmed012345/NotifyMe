@@ -66,6 +66,7 @@ public class NotifyMe {
             builder.rrule = "";
         values.put(NOTIFICATION_TITLE_TEXT,String.valueOf(builder.title));
         values.put(NOTIFICATION_CONTENT_TEXT,String.valueOf(builder.content));
+        values.put(NOTIFICATION_SOUND, String.valueOf(builder.sound));
         values.put(NOTIFICATION_RRULE,String.valueOf(builder.rrule));
         values.put(NOTIFICATION_TIME,cal.getTimeInMillis());
         if(builder.dstart == null) {
@@ -169,6 +170,7 @@ public class NotifyMe {
         protected int delay = 0;
         protected Date time = new Date();
         protected Date dstart = new Date();
+        protected Uri sound;
         protected String[] actions = new String[0];
         protected String[] actions_text = new String[0];
         protected String[] actions_dismiss = new String[0];
@@ -204,6 +206,16 @@ public class NotifyMe {
 
         public Builder dstart(Calendar dstart){
             this.dstart = dstart.getTime();
+            return this;
+        }
+        
+         public Builder setSound(Uri sound) {
+            this.sound = sound;
+            return this;
+        }
+
+        public Builder sound(@NonNull Uri sound) {
+            setSound(sound);
             return this;
         }
 
