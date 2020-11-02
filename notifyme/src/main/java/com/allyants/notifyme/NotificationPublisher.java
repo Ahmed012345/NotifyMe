@@ -49,6 +49,7 @@ public class NotificationPublisher extends BroadcastReceiver {
         data.moveToFirst();
         String title = data.getString(data.getColumnIndex(NOTIFICATION_TITLE_TEXT));
         String content = data.getString(data.getColumnIndex(NOTIFICATION_CONTENT_TEXT));
+        Uri sound = Uri.parse(data.getString(data.getColumnIndex(NOTIFICATION_SOUND)));
         String rrule = data.getString(data.getColumnIndex(NOTIFICATION_RRULE));
         long dstart = data.getLong(data.getColumnIndex(NOTIFICATION_DSTART));
         String str_actions = data.getString(data.getColumnIndex(NOTIFICATION_ACTIONS));
@@ -97,8 +98,8 @@ public class NotificationPublisher extends BroadcastReceiver {
                 e.printStackTrace();
             }
         }
-        Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        mBuilder.setSound(uri);
+      //  Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        mBuilder.setSound(sound);
         Intent deleteIntent = new Intent(context,DeletePendingIntent.class);
         deleteIntent.putExtra("_id",notificationId);
         deleteIntent.putExtra("rrule",rrule);
